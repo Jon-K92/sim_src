@@ -121,8 +121,8 @@ module ID ( 	CLK,
 	assign signExtended_output1 = {{16{Instr1[15]}},Instr1[15:0]};
 	assign Shift_addResult1 = PCA+(signExtended_output1<<2);	
 	assign nia1 = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
-	assign readRegisterA1=Instr1[25:21];
-	assign readRegisterB1=Instr1[20:16];
+	assign readRegisterA1=Instr1[26:22];
+	assign readRegisterB1=Instr1[21:17];
 	assign writeRegister1 = (RegDst1)?Instr1[15:11]:((link1)?5'b11111:((syscal1)?5'b00000:Instr1[20:16]));
 	assign readDataA1 = Reg[readRegisterA1];
 	assign readDataB1 = Reg[readRegisterB1];
