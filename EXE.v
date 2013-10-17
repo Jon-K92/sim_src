@@ -48,7 +48,6 @@ module EXE(	CLK,
    output reg     [ 4: 0] writeRegister1_PR;
    output reg	     MemtoReg1_PR;
    output reg	     ALUSrc1_PR;
-   output reg	     MemtoReg2_PR;
    output reg		  MemRead1_PR;
    output reg		  MemWrite1_PR;
    output reg		  do_writeback1_PR;
@@ -76,7 +75,6 @@ module EXE(	CLK,
    input		  MemWrite1;
    input		  CLK;
    input		  RESET;
-   input		  FREEZE;
 	
    wire	   [31: 0] aluResult1;
    wire	   [31: 0] OpA1;
