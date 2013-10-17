@@ -1,0 +1,157 @@
+# Reading C:/altera/10.1sp1/modelsim_ase/tcl/vsim/pref.tcl 
+# OpenFile {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v} 
+vlib work
+vlog -reportprogress 300 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v}
+vlog -reportprogress 300 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# ** Warning: (vlog-6) -- Waiting for lock by "unknown". Lockfile is "C:\Users\Jon\Dropbox\Documents\School\Senior 2012-2013\ECE201\project1\sim_src\work/_lock".
+# -- Compiling module ALU
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(48): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(71): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(72): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(73): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(74): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(75): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(76): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(77): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(78): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(79): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(80): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(81): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(82): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(83): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(84): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(85): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(86): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(87): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(88): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(89): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(90): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(91): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(92): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(93): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(94): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(95): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(96): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(97): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(98): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(99): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(100): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(101): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(102): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(103): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(104): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(109): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(110): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(111): (vlog-2110) Illegal reference to net "i".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(111): (vlog-2110) Illegal reference to net "i".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(111): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(117): (vlog-2110) Illegal reference to net "temp".
+# -- Compiling module ALU
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(48): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(71): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(72): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(73): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(74): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(75): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(76): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(77): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(78): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(79): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(80): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(81): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(82): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(83): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(84): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(85): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(86): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(87): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(88): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(89): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(90): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(91): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(92): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(93): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(94): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(95): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(96): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(97): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(98): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(99): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(100): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(101): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(102): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(103): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(104): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(109): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(110): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(111): (vlog-2110) Illegal reference to net "i".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(111): (vlog-2110) Illegal reference to net "i".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(111): (vlog-2110) Illegal reference to net "temp".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ALU.v(117): (vlog-2110) Illegal reference to net "temp".
+vlog -reportprogress 300 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module compare
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(20): Register is illegal in left-hand side of continuous assignment
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(26): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(27): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(28): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(31): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(32): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(33): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(35): (vlog-2110) Illegal reference to net "br_taken".
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/compare.v(37): (vlog-2110) Illegal reference to net "br_taken".
+vlog -reportprogress 300 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/EXE.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module EXE
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/EXE.v(51): In, out, or inout does not appear in port list: MemtoReg2_PR.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/EXE.v(79): In, out, or inout does not appear in port list: FREEZE.
+vlog -reportprogress 300 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module ID
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(120): near ";": syntax error, unexpected ';'
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(135): Undefined variable: Instr2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(137): Undefined variable: RegDst2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(137): Undefined variable: link2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(137): Undefined variable: syscal2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(150): Undefined variable: comment1.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(273): Undefined variable: do_writeback2_WB.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(274): Undefined variable: writeRegister2_WB.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(274): Undefined variable: writeData2_WB.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/ID.v(299): Undefined variable: FREEZE.
+vlog -reportprogress 30 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module IF
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(20): In, out, or inout does not appear in port list: Instr2_PR.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(27): In, out, or inout does not appear in port list: Instr2_fIM.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(31): In, out, or inout does not appear in port list: FREEZE.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(34): In, out, or inout does not appear in port list: no_new_fetch.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(35): In, out, or inout does not appear in port list: fetchNull1.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(36): In, out, or inout does not appear in port list: fetchNull2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/IF.v(46): Register is illegal in left-hand side of continuous assignment
+vlog -reportprogress 30 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module MEM
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(78): Undefined variable: MemWrite2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(78): Undefined variable: Instr2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(79): Undefined variable: MemRead2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(81): Undefined variable: writeRegister2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(82): Undefined variable: select2_WB.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(82): Undefined variable: writeData2_WB.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(82): Undefined variable: readDataB2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(83): Undefined variable: aluResult2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(88): Undefined variable: ALU_control2.
+# ** Error: C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MEM.v(107): near "1": syntax error, unexpected "INTEGER NUMBER"
+vlog -reportprogress 30 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/MIPS.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module MIPS
+# 
+# Top level modules:
+# 	MIPS
+vlog -reportprogress 30 -work work {C:/Users/Jon/Dropbox/Documents/School/Senior 2012-2013/ECE201/project1/sim_src/WB.v}
+# Model Technology ModelSim ALTERA vlog 6.6d Compiler 2010.11 Nov  2 2010
+# -- Compiling module WB
+# 
+# Top level modules:
+# 	WB
