@@ -12,7 +12,11 @@ module IF(	CLK,
 		PC_init, 
 		Instr1_fIM, 
 		Instr1_PR, 
-		Instr_address_2IM
+		Instr_address_2IM,
+		Instr2_PR,
+		FREEZE,
+		fetchNull1,
+		no_new_fetch
 		);
 
   output reg     [31: 0] Instr_address_2IM;
@@ -24,7 +28,6 @@ module IF(	CLK,
   input	  [31: 0] nextInstruction_address;
   input	  [31: 0] PC_init;
   input	  [31: 0] Instr1_fIM;
-  input	  [31: 0] Instr2_fIM;
   input		  single_fetch;
   input		  CLK;
   input		  RESET;
@@ -33,7 +36,6 @@ module IF(	CLK,
   input		  taken_branch2; 
   input		  no_new_fetch;
   input			 fetchNull1;
-  input			 fetchNull2;
 
   wire	   [31: 0] Instr1;
   wire	   [31: 0] Instr2;
