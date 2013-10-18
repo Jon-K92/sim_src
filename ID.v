@@ -18,7 +18,6 @@ module ID ( 	CLK,
 		Data1_WB,
 		aluResult1,
 		do_writeback1_PR,
-		Reg,
 		readRegisterA1_PR,
 		readRegisterB1_PR,
 		taken_branch1_PR,
@@ -26,6 +25,7 @@ module ID ( 	CLK,
 		writeRegister1_WB,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
+		Reg,
 		R2_output_PR,
 		Operand_A1_PR,
 		Operand_B1_PR,
@@ -47,7 +47,7 @@ module ID ( 	CLK,
 	output reg      [31: 0] Operand_B1_PR;
 	output reg      [31: 0] Dest_Value1_PR;
 	output reg      [31: 0] nextInstruction_address_PR;
-	output reg      [0: 31] Reg;
+	output reg      [31: 0] Reg;
 	output reg      [31: 0] readDataB1_PR;
 	output reg      [31: 0] Instr1_PR;
 	output reg      [ 5: 0] ALU_control1_PR;
@@ -93,6 +93,7 @@ module ID ( 	CLK,
 	wire	    [31: 0] readDataB1;
 	wire	    [31: 0] Operand_B1;
 	wire	    [31: 0] nextInstruction_address;
+	reg	    [ 5: 0] ALU_control1;
 	reg	    [ 5: 0] opcode1;
 	reg	    [ 5: 0] funct1;
 	wire	    [ 4: 0] readRegisterA1;/*note notation*/
@@ -101,8 +102,6 @@ module ID ( 	CLK,
 	reg	    [ 4: 0] rt1;
 	wire	    [ 4: 0] writeRegister1;
 	wire		    taken_branch1;
-	
-	reg	    [ 5: 0] ALU_control1;
 	reg		    link1;
 	reg		    RegDst1;
 	reg		    jump1;
@@ -115,9 +114,10 @@ module ID ( 	CLK,
 	reg		    jumpRegister_Flag1;
 	reg		    sign_or_zero_Flag1;
 	reg		    syscal1;
-	reg      comment1;
-  reg	     [ 1: 0] syscalBubbleCounter;
+
+	reg	     [ 1: 0] syscalBubbleCounter;
  	reg			single_fetch_PR;
+ 	reg   comment1;
 	
 
 	//assign SYS_OUT = /* TA: you need to deal with the syscalls in sim_main.cpp, however, you need a signal from your hardware */;
