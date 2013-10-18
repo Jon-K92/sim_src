@@ -1,0 +1,45 @@
+library verilog;
+use verilog.vl_types.all;
+entity ID is
+    port(
+        CLK             : in     vl_logic;
+        RESET           : in     vl_logic;
+        ALUSrc1_PR      : out    vl_logic;
+        single_fetch_OUT: out    vl_logic;
+        Instr1_PR       : out    vl_logic_vector(31 downto 0);
+        Dest_Value1_PR  : out    vl_logic_vector(31 downto 0);
+        SYS_OUT         : out    vl_logic;
+        readDataB1_PR   : out    vl_logic_vector(31 downto 0);
+        Instr1_10_6_PR  : out    vl_logic_vector(4 downto 0);
+        do_writeback1_MEM: in     vl_logic;
+        writeRegister1_MEM: in     vl_logic_vector(4 downto 0);
+        Data1_MEM       : in     vl_logic_vector(31 downto 0);
+        do_writeback1_WB: in     vl_logic;
+        \writeRegister1_WB\: in     vl_logic_vector(4 downto 0);
+        Data1_WB        : in     vl_logic_vector(31 downto 0);
+        aluResult1      : in     vl_logic_vector(31 downto 0);
+        do_writeback1_PR: out    vl_logic;
+        Reg             : out    vl_logic_vector(0 to 31);
+        readRegisterA1_PR: out    vl_logic_vector(4 downto 0);
+        readRegisterB1_PR: out    vl_logic_vector(4 downto 0);
+        taken_branch1_PR: out    vl_logic;
+        aluResult1_WB   : in     vl_logic_vector(31 downto 0);
+        \writeRegister1_WB\: in     vl_logic_vector(4 downto 0);
+        writeRegister1_PR: out    vl_logic_vector(4 downto 0);
+        nextInstruction_address_PR: out    vl_logic_vector(31 downto 0);
+        R2_output_PR    : out    vl_logic_vector(31 downto 0);
+        Operand_A1_PR   : out    vl_logic_vector(31 downto 0);
+        Operand_B1_PR   : out    vl_logic_vector(31 downto 0);
+        ALU_control1_PR : out    vl_logic_vector(5 downto 0);
+        MemRead1_PR     : out    vl_logic;
+        MemWrite1_PR    : out    vl_logic;
+        MemtoReg1_PR    : out    vl_logic;
+        Instr1          : in     vl_logic_vector(31 downto 0);
+        PCA             : in     vl_logic_vector(31 downto 0);
+        writeData1_WB   : in     vl_logic_vector(31 downto 0);
+        R2_input        : in     vl_logic_vector(31 downto 0);
+        CIA             : in     vl_logic_vector(31 downto 0);
+        FREEZE          : in     vl_logic;
+        insertBubble_OUT: out    vl_logic
+    );
+end ID;

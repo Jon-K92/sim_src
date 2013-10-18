@@ -18,6 +18,7 @@ module ID ( 	CLK,
 		Data1_WB,
 		aluResult1,
 		do_writeback1_PR,
+		Reg,
 		readRegisterA1_PR,
 		readRegisterB1_PR,
 		taken_branch1_PR,
@@ -25,7 +26,6 @@ module ID ( 	CLK,
 		writeRegister1_WB,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
-		Reg,
 		R2_output_PR,
 		Operand_A1_PR,
 		Operand_B1_PR,
@@ -37,7 +37,9 @@ module ID ( 	CLK,
 		PCA,
 		writeData1_WB,
 		R2_input,
-		CIA
+		CIA,
+		FREEZE,
+		insertBubble_OUT
 		);
    	
 	output reg      [31: 0] R2_output_PR;
@@ -45,7 +47,7 @@ module ID ( 	CLK,
 	output reg      [31: 0] Operand_B1_PR;
 	output reg      [31: 0] Dest_Value1_PR;
 	output reg      [31: 0] nextInstruction_address_PR;
-	output reg      [31: 0] Reg [0:31];
+	output reg      [0: 31] Reg;
 	output reg      [31: 0] readDataB1_PR;
 	output reg      [31: 0] Instr1_PR;
 	output reg      [ 5: 0] ALU_control1_PR;
@@ -62,7 +64,6 @@ module ID ( 	CLK,
 	output reg		do_writeback1_PR;
 	output reg	      insertBubble_OUT;
 	output reg	      SYS_OUT;
-	output reg	      fetchNull1_OUT;
 
 	input	   [31: 0] Data1_MEM;
 	input	   [31 :0] Data1_WB;
@@ -79,6 +80,7 @@ module ID ( 	CLK,
 	input		   do_writeback1_MEM;
 	input		   CLK;
 	input		   RESET;
+	input     FREEZE;
 
 	wire	    [31: 0] Instr1;
 	wire	    [31: 0] com_OpA1;
@@ -91,33 +93,34 @@ module ID ( 	CLK,
 	wire	    [31: 0] readDataB1;
 	wire	    [31: 0] Operand_B1;
 	wire	    [31: 0] nextInstruction_address;
-	wire	    [ 5: 0] ALU_control1;
-	wire	    [ 5: 0] opcode1;
-	wire	    [ 5: 0] funct1;
+	reg	    [ 5: 0] opcode1;
+	reg	    [ 5: 0] funct1;
 	wire	    [ 4: 0] readRegisterA1;/*note notation*/
 	wire	    [ 4: 0] readRegisterB1;/*note notation*/
-    wire	    [ 4: 0] format1;
-	wire	    [ 4: 0] rt1;
+  reg	    [ 4: 0] format1;
+	reg	    [ 4: 0] rt1;
 	wire	    [ 4: 0] writeRegister1;
 	wire		    taken_branch1;
-	wire		    link1;
-	wire		    RegDst1;
-	wire		    jump1;
-	wire		    branch1;
-	wire		    MemRead1;
-	wire		    MemtoReg1;
-	wire		    MemWrite1;
-	wire		    ALUSrc1;
-	wire		    RegWrite1;
-	wire		    jumpRegister_Flag1;
-	wire		    sign_or_zero_Flag1;
-	wire		    syscal1;
-
-	reg	     [ 1: 0] syscalBubbleCounter;
+	
+	reg	    [ 5: 0] ALU_control1;
+	reg		    link1;
+	reg		    RegDst1;
+	reg		    jump1;
+	reg		    branch1;
+	reg		    MemRead1;
+	reg		    MemtoReg1;
+	reg		    MemWrite1;
+	reg		    ALUSrc1;
+	reg		    RegWrite1;
+	reg		    jumpRegister_Flag1;
+	reg		    sign_or_zero_Flag1;
+	reg		    syscal1;
+	reg      comment1;
+  reg	     [ 1: 0] syscalBubbleCounter;
  	reg			single_fetch_PR;
 	
 
-	assign SYS_OUT = /* TA: you need to deal with the syscalls in sim_main.cpp, however, you need a signal from your hardware */;
+	//assign SYS_OUT = /* TA: you need to deal with the syscalls in sim_main.cpp, however, you need a signal from your hardware */;
 	assign signExtended_output1 = {{16{Instr1[15]}},Instr1[15:0]};
 	assign Shift_addResult1 = PCA+(signExtended_output1<<2);	
 	assign nia1 = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
@@ -132,9 +135,9 @@ module ID ( 	CLK,
 	// TA: bypassing/forwarding logic is missing here!
 	
 	compare compare1(jump1,com_OpA1,com_OpB1,Instr1,taken_branch1);
-	assign readRegisterA2=Instr2[25:21];
-	assign readRegisterB2=Instr2[20:16];
-	assign writeRegister2 = (RegDst2)?Instr2[15:11]:((link2)?5'b11111:((syscal2)?5'b00000:Instr2[20:16]));
+	//assign readRegisterA2=Instr2[25:21];
+	//assign readRegisterB2=Instr2[20:16];
+	//assign writeRegister2 = (RegDst2)?Instr2[15:11]:((link2)?5'b11111:((syscal2)?5'b00000:Instr2[20:16]));
 
 
 	//CONTROLLER1
@@ -270,8 +273,8 @@ module ID ( 	CLK,
 	always @ (posedge CLK) begin
 		if (do_writeback1_WB) // lower priority
 			Reg[writeRegister1_WB] = writeData1_WB;
-		if (do_writeback2_WB) // higher priority
-			Reg[writeRegister2_WB] = writeData2_WB;
+	//	if (do_writeback2_WB) // higher priority
+	//		Reg[writeRegister2_WB] = writeData2_WB;
 	end
 
 
@@ -308,7 +311,7 @@ module ID ( 	CLK,
 			ALU_control1_PR <= ALU_control1;
 			readRegisterA1_PR <= (link1 || syscal1)?5'b00000:readRegisterA1;
 			readRegisterB1_PR <= (ALUSrc1 || link1 || syscal1)?5'b00000:readRegisterB1;
-			do_writeback1_PR <= ((RegWrite1)&&&&(ALU_control1!=6'b110100))||MemtoReg1;
+			do_writeback1_PR <= ((RegWrite1)&&(ALU_control1!=6'b110100))||MemtoReg1;
 			Instr1_10_6_PR <= Instr1[10: 6];
 			readDataB1_PR <= readDataB1;
 			Dest_Value1_PR <= Reg[writeRegister1];
