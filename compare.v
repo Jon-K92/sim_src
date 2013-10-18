@@ -8,14 +8,14 @@ module compare(	Jump,
 		taken
 		);
 
-	output reg taken;
+	output wire taken;
 
 	input      [31: 0] OpA;
 	input      [31: 0] OpB;
 	input      [31: 0] Instr_input;	
 	input	           Jump;
 
-	wire               br_taken;
+	reg              br_taken;
 	
 	assign taken=br_taken|Jump;
 
