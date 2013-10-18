@@ -12,8 +12,8 @@ module ALU( HI, LO, aluResult, A, B, ALU_control, shiftAmount, CLK );
    input      [ 4: 0] shiftAmount;
    input              CLK;
 
-   wire       [63: 0] temp;
-   wire       [ 4: 0] i;
+   reg       [63: 0] temp;
+   reg       [ 4: 0] i;
 
    always begin
       case( ALU_control ) 
