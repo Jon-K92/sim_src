@@ -19,7 +19,7 @@ module IF(	CLK,
 		no_new_fetch
 		);
 
-  output reg     [31: 0] Instr_address_2IM;
+  output wire     [31: 0] Instr_address_2IM;
   output reg     [31: 0] Instr1_PR;
   output reg     [31: 0] Instr2_PR;
   output reg     [31: 0] PCA_PR;
