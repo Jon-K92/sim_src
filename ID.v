@@ -4,24 +4,24 @@
 module ID ( 	CLK,
 		RESET,
 		ALUSrc1_PR,
-		single_fetch_OUT,
+	//	single_fetch_OUT,
 		Instr1_PR,
 		Dest_Value1_PR,
 		SYS_OUT,
 		readDataB1_PR,
 		Instr1_10_6_PR,
-		do_writeback1_MEM,
-		writeRegister1_MEM,
-		Data1_MEM,
+	//	do_writeback1_MEM,
+	//	writeRegister1_MEM,
+		//Data1_MEM, unused.
 		do_writeback1_WB,
 		writeRegister1_WB,
-		Data1_WB,
-		aluResult1,
+		//Data1_WB, unused.
+		//aluResult1, unused.
 		do_writeback1_PR,
 		readRegisterA1_PR,
 		readRegisterB1_PR,
 		taken_branch1_PR,
-		aluResult1_WB,
+//		aluResult1_WB,
 		writeRegister1_WB,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
@@ -37,7 +37,7 @@ module ID ( 	CLK,
 		PCA,
 		writeData1_WB,
 		R2_input,
-		CIA,
+	//	CIA, unused
 		FREEZE,
 		insertBubble_OUT
 		);
@@ -56,7 +56,7 @@ module ID ( 	CLK,
 	output reg      [ 4: 0] readRegisterB1_PR;
 	output reg      [ 4: 0] Instr1_10_6_PR;
 	output reg	      ALUSrc1_PR;
-	output reg 		single_fetch_OUT;
+//	output reg 		single_fetch_OUT;
 	output reg 		taken_branch1_PR;
 	output reg	      MemRead1_PR;
 	output reg	      MemtoReg1_PR;
@@ -65,19 +65,19 @@ module ID ( 	CLK,
 	output reg	      insertBubble_OUT;
 	output reg	      SYS_OUT;
 
-	input	   [31: 0] Data1_MEM;
-	input	   [31 :0] Data1_WB;
+//	input	   [31: 0] Data1_MEM;
+//	input	   [31 :0] Data1_WB;
 	input	   [31: 0] Instr1;//_IN;
-	input	   [31: 0] aluResult1;
-	input	   [31: 0] aluResult1_WB;
+//	input	   [31: 0] aluResult1; 
+//	input	   [31: 0] aluResult1_WB;
 	input	   [31: 0] PCA;
 	input	   [31: 0] writeData1_WB;
 	input	   [31: 0] R2_input;
-	input	   [31: 0] CIA;
+//	input	   [31: 0] CIA;
 	input	   [ 4: 0] writeRegister1_WB;
-	input	   [ 4: 0] writeRegister1_MEM;
+//	input	   [ 4: 0] writeRegister1_MEM;
 	input		   do_writeback1_WB;
-	input		   do_writeback1_MEM;
+//	input		   do_writeback1_MEM;
 	input		   CLK;
 	input		   RESET;
 	input     FREEZE;
