@@ -19,7 +19,6 @@ entity ID is
         Data1_WB        : in     vl_logic_vector(31 downto 0);
         aluResult1      : in     vl_logic_vector(31 downto 0);
         do_writeback1_PR: out    vl_logic;
-        Reg             : out    vl_logic_vector(0 to 31);
         readRegisterA1_PR: out    vl_logic_vector(4 downto 0);
         readRegisterB1_PR: out    vl_logic_vector(4 downto 0);
         taken_branch1_PR: out    vl_logic;
@@ -27,6 +26,7 @@ entity ID is
         \writeRegister1_WB\: in     vl_logic_vector(4 downto 0);
         writeRegister1_PR: out    vl_logic_vector(4 downto 0);
         nextInstruction_address_PR: out    vl_logic_vector(31 downto 0);
+        Reg             : out    vl_logic_vector(31 downto 0);
         R2_output_PR    : out    vl_logic_vector(31 downto 0);
         Operand_A1_PR   : out    vl_logic_vector(31 downto 0);
         Operand_B1_PR   : out    vl_logic_vector(31 downto 0);
