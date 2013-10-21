@@ -75,18 +75,18 @@ module MEM (	CLK,
 
    // TA: bypassing is missing here!
 
-   assign Instr_OUT = (MemWrite2)?Instr2:Instr1;
-   assign MemRead_2DM = (MemRead1|MemRead2);
-   assign MemWrite_2DM = (MemWrite1|MemWrite2);
-   assign select1_WB = (do_writeback1_WB&&(writeRegister1_WB==((MemWrite2)?writeRegister2:writeRegister1)))/*&&(!ALUSrc1)/**/;
-   assign data_write_2DM = (select2_WB)?writeData2_WB:((select1_WB)?writeData1_WB:((MemWrite2)?readDataB2:readDataB1));
-   assign data_address_2DM = (MemWrite2|MemRead2)?aluResult2:aluResult1;
+   assign Instr_OUT = Instr1;
+   assign MemRead_2DM = MemRead1;
+   assign MemWrite_2DM = (MemWrite1);
+   assign select1_WB = (do_writeback1_WB&&(writeRegister1_WB==(writeRegister1)))/*&&(!ALUSrc1)/**/;
+   assign data_write_2DM = ((select1_WB)?writeData1_WB:(readDataB1));
+   assign data_address_2DM = aluResult1;
    
    always
      begin
-        data_read_aligned = writeData2_WB;
-	ALU_control = (MemRead2)? ALU_control2: ALU_control1;//~DS//ALU_control = (MemRead2)? ALU_control1: ALU_control2;
-	aluResult = (MemRead2)? aluResult2: aluResult1;//~DS//aluResult = (MemRead2)? aluResult1: aluResult2;
+      //  data_read_aligned = writeData2_WB; (not sure what this does...but involves second instruction.
+	ALU_control = ALU_control1;
+	aluResult = aluResult1;
 	
 	       case(ALU_control)
         		6'b101101: begin //LWX
@@ -104,6 +104,7 @@ module MEM (	CLK,
                     		endcase
                 	end
                 	6'b100001: begin //LB
+                		case( aluResult[1:0] )
 					1: data_read_aligned={{24{data_read_fDM[23]}},data_read_fDM[23:16]};
 					0: data_read_aligned={{24{data_read_fDM[31]}},data_read_fDM[31:24]};
 					default: begin end
