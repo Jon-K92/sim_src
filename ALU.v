@@ -1,7 +1,9 @@
 //-----------------------------------------
 //               ALU Module
 //-----------------------------------------
-module ALU( HI, LO, aluResult, A, B, ALU_control, shiftAmount, CLK );
+module ALU( HI, LO, aluResult, A, B, ALU_control, shiftAmount,
+//CLK 
+);
    output reg [31: 0] aluResult;
    output reg [31: 0] HI;
    output reg [31: 0] LO; 
@@ -10,7 +12,7 @@ module ALU( HI, LO, aluResult, A, B, ALU_control, shiftAmount, CLK );
    input      [31: 0] B; 
    input      [ 5: 0] ALU_control;
    input      [ 4: 0] shiftAmount;
-   input              CLK;
+  // input              CLK;
 
    reg       [63: 0] temp;
    reg       [ 4: 0] i;
