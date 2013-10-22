@@ -26,6 +26,7 @@ module ID ( 	CLK,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
 		Reg,
+		nextInstruction_address,
 		R2_output_PR,
 		Operand_A1_PR,
 		Operand_B1_PR,
@@ -64,6 +65,8 @@ module ID ( 	CLK,
 	output reg		do_writeback1_PR;
 	output reg	      insertBubble_OUT;
 	output reg	      SYS_OUT;
+	
+	output	    [31: 0] nextInstruction_address;
 
 //	input	   [31: 0] Data1_MEM;
 //	input	   [31 :0] Data1_WB;
@@ -92,7 +95,6 @@ module ID ( 	CLK,
 	wire	    [31: 0] readDataA1;
 	wire	    [31: 0] readDataB1;
 	wire	    [31: 0] Operand_B1;
-	wire	    [31: 0] nextInstruction_address;
 	reg	    [ 5: 0] ALU_control1;
 	reg	    [ 5: 0] opcode1;
 	reg	    [ 5: 0] funct1;
@@ -123,7 +125,7 @@ module ID ( 	CLK,
 	//assign SYS_OUT = /* TA: you need to deal with the syscalls in sim_main.cpp, however, you need a signal from your hardware */;
 	assign signExtended_output1 = {{16{Instr1[15]}},Instr1[15:0]};
 	assign Shift_addResult1 = PCA+(signExtended_output1<<2);	
-	assign nia1 = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
+	assign nextInstruction_address = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
 	assign readRegisterA1=Instr1[25:21];
 	assign readRegisterB1=Instr1[20:16];
 	assign writeRegister1 = (RegDst1)?Instr1[15:11]:((link1)?5'b11111:((syscal1)?5'b00000:Instr1[20:16]));
@@ -181,7 +183,7 @@ module ID ( 	CLK,
 					default: $display("Not an Instruction!");
 		    		endcase
 			end
-			6'b000001: begin
+			6'b000001: begin //BLTZ / BGEZ / BLTZAL /BGEZAL
 				case ( rt1 )
 		     			5'b00000: begin {link1,RegDst1,jump1,branch1,MemRead1,MemtoReg1,MemWrite1,ALUSrc1,RegWrite1,jumpRegister_Flag1,sign_or_zero_Flag1,syscal1,ALU_control1} = 18'b000100000010100111;if(comment1)$display("[1]bltz\n");end//BLTZ
 					5'b00001: begin {link1,RegDst1,jump1,branch1,MemRead1,MemtoReg1,MemWrite1,ALUSrc1,RegWrite1,jumpRegister_Flag1,sign_or_zero_Flag1,syscal1,ALU_control1} = 18'b000100000010100011;if(comment1)$display("[1]bgez\n");end//BGEZ
@@ -308,6 +310,7 @@ module ID ( 	CLK,
 			MemRead1_PR <= MemRead1;
 			MemtoReg1_PR <= MemtoReg1;
 			MemWrite1_PR <= MemWrite1;
+			nextInstruction_address_PR <= 
 			ALU_control1_PR <= ALU_control1;
 			readRegisterA1_PR <= (link1 || syscal1)?5'b00000:readRegisterA1;
 			readRegisterB1_PR <= (ALUSrc1 || link1 || syscal1)?5'b00000:readRegisterB1;
