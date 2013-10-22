@@ -20,7 +20,7 @@ module IF(	CLK,
 
   output wire     [31: 0] Instr_address_2IM;
   output reg     [31: 0] Instr1_PR;
-//  output reg     [31: 0] Instr2_PR;
+  output reg     [31: 0] Instr2_PR;
   output reg     [31: 0] PCA_PR;
   output reg     [31: 0] CIA_PR;
 
@@ -36,17 +36,17 @@ module IF(	CLK,
   input		fetchNull1;
 
   wire	   [31: 0] Instr1;
-//  wire	   [31: 0] Instr2;
+  wire	   [31: 0] Instr2;
   wire	   [31: 0] PCA; //Program Counter with 4 added
   wire	   [31: 0] CIA; //Current Instruction Address
 
   reg	    [31: 0] PC;
   reg	    [31: 0] FPC; //Fetch PC
 
-  assign Instr_address_2IM = (taken_branch1)? nextInstruction_address: PCA; //Chooses a next instuction based on if a branch is taken or not. 
-  assign PCA	= PC + 4;
-  //assign CIA	 = FPC; 
-  assign Instr1 = (fetchNull1)? 32'h00000000: (Instr1_fIM);//if fetchcNUll, fetch a null instrcution, else: on single_fetch true get
+  assign Instr_address_2IM   = (taken_branch1|taken_branch2)? nextInstruction_address: PC; //Chooses a next instuction based on if a branch is taken or not. 
+  assign PCA		 = PC;
+  assign CIA		 = FPC; 
+  assign Instr1	      = (fetchNull1)? 32'h00000000: (Instr2_PR);//if fetchcNUll, fetch a null instrcution, else: on single_fetch true get
   //instruction from primary register and on single_fetch false, get from instruction memory. 
   
 
@@ -56,7 +56,7 @@ module IF(	CLK,
     if(!RESET) //Resets on RESET = 0.
       begin
 	Instr1_PR	    <= 32'b0;
-//	Instr2_PR	    <= 32'b0;
+	Instr2_PR	    <= 32'b0;
 	PCA_PR	       <= 32'b0;
 	CIA_PR	       <= 32'b0;
 	FPC		  <= 32'b0;
