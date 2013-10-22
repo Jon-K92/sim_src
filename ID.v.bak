@@ -48,7 +48,7 @@ module ID ( 	CLK,
 	output reg      [31: 0] Operand_B1_PR;
 	output reg      [31: 0] Dest_Value1_PR;
 	output reg      [31: 0] nextInstruction_address_PR;
-	output reg      [31: 0] Reg;
+	output reg      [31: 0] Reg; // data registers $0 - $31
 	output reg      [31: 0] readDataB1_PR;
 	output reg      [31: 0] Instr1_PR;
 	output reg      [ 5: 0] ALU_control1_PR;
@@ -95,6 +95,7 @@ module ID ( 	CLK,
 	wire	    [31: 0] readDataA1;
 	wire	    [31: 0] readDataB1;
 	wire	    [31: 0] Operand_B1;
+	wire     [31: 0] Operand_A1;
 	reg	    [ 5: 0] ALU_control1;
 	reg	    [ 5: 0] opcode1;
 	reg	    [ 5: 0] funct1;
@@ -128,11 +129,12 @@ module ID ( 	CLK,
 	assign nextInstruction_address = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
 	assign readRegisterA1=Instr1[25:21]; //Rs
 	assign readRegisterB1=Instr1[20:16]; //Rt
-	assign writeRegister1 = (RegDst1)?Instr1[15:11]:((link1)?5'b11111:((syscal1)?5'b00000:Instr1[20:16])); //Setting Rd as from Instruction or R31(return address register) or 0 on Syscall or Rt which then further allocates
-	assign readDataA1 = Reg[readRegisterA1]; //5 bit location in Reg
+	assign writeRegister1 = (RegDst1)?Instr1[15:11]:((link1)?5'b11111:((syscal1)?5'b00000:Instr1[20:16])); //Setting writeRegister 5 bits as from Instruction or R31(return address register) or 0 on Syscall or Rt which then further allocates
+	assign readDataA1 = Reg[readRegisterA1]; //5 bit location in Reg //used for arithmetic / not used for any links or syscalls
 	assign readDataB1 = Reg[readRegisterB1]; //5 bit location in Reg //not used for BLTZAL, JAL, ADDI, etc. Need to get value from ALU to link / immediate
 	assign Operand_B1 = readDataB1;
-	assign R2_output = Reg[2];
+	assign Operand_A1 = readDataA1;
+	assign R2_output = Reg[2]; //function results returned here
 
 	// TA: bypassing/forwarding logic is missing here!
 	
