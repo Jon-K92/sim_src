@@ -6,13 +6,13 @@ module IF(	CLK,
 		PCA_PR,
 		CIA_PR,
 		taken_branch1,
-		taken_branch2, 
+		//taken_branch2, 
 		nextInstruction_address, 
 		PC_init, 
 		Instr1_fIM, //From instruction Memory
 		Instr1_PR, 
 		Instr_address_2IM,
-		Instr2_PR,
+	//	Instr2_PR,
 		FREEZE,
 		fetchNull1, 
 		no_new_fetch
@@ -31,7 +31,7 @@ module IF(	CLK,
   input		  RESET;
   input		  FREEZE;
   input		  taken_branch1;
-  input		  taken_branch2; 
+  //input		  taken_branch2; 
   input		  no_new_fetch;
   input		fetchNull1;
 
