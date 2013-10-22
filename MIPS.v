@@ -110,7 +110,7 @@ module MIPS (	R2_output,
    readRegisterA1_IDEXE,readRegisterB1_IDEXE,taken_branch1_IFID,writeRegister1_IDEXE,
    nextInstruction_address_IDIF, nextInstrcution_address,R2_output,Operand_A1_IDEXE,Operand_B1_IDEXE,
    ALU_control1_IDEXE,MemRead1_IDEXE,MemWrite1_IDEXE,MemtoReg1_IDEXE, Instr1_IFID,PCA_IFID,
-   writeData1_WB, R2_input,FREEZE,insertBubble_OUT;/* TA: arguments are missing */);
+   writeData1_WB, R2_input,FREEZE,insertBubble_OUT/* TA: arguments are missing */);
   //ID (CLK,RESET,ALUSrc1_PR, Instr1_PR,Dest_Value1_PR, SYS_OUT, readDataB1_PR,Instr1_10_6_PR,
    //do_writeback1_WB, writeRegister1_WB, do_writeback1_PR, readRegisterA1_PR,readRegisterB1_PR,
 //  taken_branch1_PR, writeRegister1_PR, nextInstruction_address_PR,
