@@ -36,7 +36,6 @@ module EXE(	CLK,
 		Operand_B1, 
 		MemtoReg1, 
 		MemtoReg1_PR, 
-
 		aluResult1_PR,
 		Regbase
 		);
@@ -68,7 +67,7 @@ module EXE(	CLK,
    input	  [ 4: 0] readRegisterB1;
    input	  [ 4: 0] writeRegister1;
    input	  [ 4: 0] Instr1_10_6;
-   input   [ 4: 0] Instr1_15_0;
+   input   [ 15: 0] Instr1_15_0;
    input	  [ 4: 0] writeRegister1_WB;
    input		  ALUSrc1;
    input	 	  do_writeback1_MEM;
@@ -112,7 +111,7 @@ module EXE(	CLK,
 			Instr1_PR <= 32'b0;
 			ALUSrc1_PR <= 1'b0;
 		end
-	else
+	else 
 	  begin
 	    MemtoReg1_PR <= MemtoReg1;
 			MemRead1_PR <= MemRead1;
