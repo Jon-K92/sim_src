@@ -13,7 +13,7 @@ module MEM (	CLK,
 		readDataB1,
 		//Data1_2ID,
 		do_writeback1_PR, 
-		//do_writeback1,
+		do_writeback1,
 		writeRegister1, 
 		writeRegister1_PR, 
 		data_write_2DM,
@@ -54,7 +54,7 @@ module MEM (	CLK,
    input         [ 4: 0] writeRegister1;
    input                 ALUSrc1;
    input                 do_writeback1_WB;
-   //input                 do_writeback1;
+   input                 do_writeback1;
    input                 CLK;
    input                 RESET;
    //input                 MemtoReg1;
@@ -158,7 +158,7 @@ module MEM (	CLK,
            writeRegister1_PR <= writeRegister1;
            aluResult1_PR <= aluResult1;
            data_read1_PR <= data_read_fDM;
-           do_writeback1_PR <= 0;
+           do_writeback1_PR <= do_writeback1;
          end 
      end
 
