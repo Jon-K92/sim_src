@@ -36,7 +36,7 @@ module EXE(	CLK,
 		Operand_B1, 
 		MemtoReg1, 
 		MemtoReg1_PR, 
-		aluResult1_PR,
+		aluResult1_PR
 		);
 
    output reg     [31: 0] aluResult1_PR;
