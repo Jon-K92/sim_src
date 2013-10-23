@@ -28,7 +28,6 @@ module ID ( 	CLK,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
 		Reg,
-		nextInstruction_address,
 		R2_output_PR,
 		Operand_A1_PR,
 		Operand_B1_PR,
@@ -70,7 +69,7 @@ module ID ( 	CLK,
 	output reg	      insertBubble_OUT;
 	output reg	      SYS_OUT;
 	
-	output	    [31: 0] nextInstruction_address;
+	wire	    [31: 0] nextInstruction_address;
 
 //	input	   [31: 0] Data1_MEM;
 //	input	   [31 :0] Data1_WB;
@@ -323,7 +322,7 @@ module ID ( 	CLK,
 			do_writeback1_PR <= ((RegWrite1)&&(ALU_control1!=6'b110100))||MemtoReg1;
 			Instr1_10_6_PR <= Instr1[10: 6];
 			Instr1_15_0_PR <= Instr1[15: 0]; //immediate
-			readDataA1_PR =< readDataA1;
+			readDataA1_PR <= readDataA1;
 			readDataB1_PR <= readDataB1;
 			Dest_Value1_PR <= Reg[writeRegister1];
 			Instr1_PR <= Instr1;

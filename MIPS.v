@@ -9,7 +9,7 @@ module MIPS (	R2_output,
              	dBlkRead,
              	dBlkWrite,
              	data_write_2DM,
-             	//data_read_fDM,
+             	data_read_fDM,
              	block_write_2DM,
              	block_write_2IM,
              	block_read_fDM,
@@ -37,7 +37,7 @@ module MIPS (	R2_output,
 
    input  [31: 0]  PC_init;
    input  [31: 0]  R2_input;
-   //input  [31: 0]  data_read_fDM;
+   input  [31: 0]  data_read_fDM;
    input  [255:0]  block_read_fDM;
    input  [255:0]  block_read_fIM;
    input  [31: 0]  Instr1_fIM;
@@ -69,11 +69,11 @@ module MIPS (	R2_output,
    wire		do_writeback1_WB;
    wire [4:0]	writeRegister1_WB;
    wire		do_writeback1_ID;
-   wire [4:0] readRegisterA1_IDEXE;
+   wire [4:0]	readRegisterA1_IDEXE;
    wire [4:0]	readRegisterB1_IDEXE;
    wire [4:0]	writeRegister1_IDEXE;
-   wire [31:0] Reg;
-    wire [31:0] nextInstruction_address;
+   wire [31:0] 	Reg;
+   
     wire [31:0] Operand_A1_IDEXE;
    wire [31:0]	Operand_B1_IDEXE;
    wire [5:0]	ALU_control1_IDEXE;
@@ -82,9 +82,28 @@ module MIPS (	R2_output,
    wire		MemtoReg1_IDEXE;
    wire [31:0]	writeData1_WB;
    wire		insertBubble_OUT;
-   
-   
-   
+   wire 	ALUSrc1_EXEMEM;
+   wire [31:0]	Instr1_EXEMEM;
+   wire [31:0] 	Dst1_EXEMEM;
+   wire [31:0] 	readDataB1;
+   wire [31:0] 	readDataB1_EXEMEM;
+   wire [31:0]	 aluResult1_OUT;
+   wire [31:0] 	Data1_WB;
+   wire 	ALU_control1_EXEMEM;
+   wire [31:0] 	Data1_MEM;
+   wire [4:0] 	writeRegister1_MEMEXE;
+   wire 	do_writeback1_MEM;
+   wire 	do_writeback1_EXE;
+   wire [4:0]	writeRegister1_MEM;
+   wire 	MemRead1_EXEMEM;
+   wire 	MemWrite1_EXEMEM;
+   wire 	MemtoReg1_EXEMEM;
+   wire 	aluResult1_EXEMEM;
+   wire 	Instr_OUT;
+   wire		MemtoReg1_MEMWB;
+   wire 	aluResult1_MEMWB;
+   wire 	data_read1_MEM;
+   wire 	Data_input1;
    
    
    
@@ -108,21 +127,41 @@ module MIPS (	R2_output,
    ID ID1(CLK, RESET,ALUSrc1_IDEXE, FREEZE,Instr1_IDEXE,Dest_Value1_IDEXE,SYS,
    readDataB1_IDEXE,Instr1_10_6_IDEXE,do_writeback1_WB,writeRegister1_WB,do_writeback1_ID,
    readRegisterA1_IDEXE,readRegisterB1_IDEXE,taken_branch1_IFID,writeRegister1_IDEXE,
-   nextInstruction_address_IDIF, nextInstrcution_address,R2_output,Operand_A1_IDEXE,Operand_B1_IDEXE,
+   nextInstruction_address_IDIF, R2_output,Operand_A1_IDEXE,Operand_B1_IDEXE,
    ALU_control1_IDEXE,MemRead1_IDEXE,MemWrite1_IDEXE,MemtoReg1_IDEXE, Instr1_IFID,PCA_IFID,
-   writeData1_WB, R2_input,FREEZE,insertBubble_OUT/* TA: arguments are missing */);
+   writeData1_WB, R2_input,FREEZE,insertBubble_OUT);
   //ID (CLK,RESET,ALUSrc1_PR, Instr1_PR,Dest_Value1_PR, SYS_OUT, readDataB1_PR,Instr1_10_6_PR,
    //do_writeback1_WB, writeRegister1_WB, do_writeback1_PR, readRegisterA1_PR,readRegisterB1_PR,
 //  taken_branch1_PR, writeRegister1_PR, nextInstruction_address_PR,
-  // Reg, nextInstruction_address, R2_output_PR, Operand_A1_PR, Operand_B1_PR,
+  // Reg, R2_output_PR, Operand_A1_PR, Operand_B1_PR,
    //ALU_control1_PR, MemRead1_PR,MemWrite1_PR, MemtoReg1_PR,Instr1,
    //PCA ----Use 'PCA_IFID' (wires)
    //writeData1_WB,R2_input, FREEZE,insertBubble_OUT);
 
-   EXE EXE1 (CLK, RESET, /* TA: arguments are missing */);
+   EXE EXE1 (CLK, RESET,ALUSrc1_EXEMEM,	ALUSrc1_IDEXE,Instr1_IDEXE,Instr1_EXEMEM,Dest_Value1_IDEXE,
+   Dst1_EXEMEM,readDataB1,readDataB1_EXEMEM,aluResult1_OUT,do_writeback1_WB, writeRegister1_WB,Data1_WB,
+   ALU_control1_EXEMEM,ALU_control1_IDEXE, Data1_MEM,writeRegister1_MEMEXE,do_writeback1_MEM,
+   do_writeback1_EXE,do_writeback1_ID,readRegisterA1_IDEXE,readRegisterB1_IDEXE,writeRegister1_IDEXE,
+   writeRegister1_MEM,Instr1_10__6_IDEXE,MemRead1_IDEXE, MemWrite1_IDEXE,MemRead1_EXEMEM,MemWrite1_EXEMEM,
+   Operand_Al_IDEXE, Operand_B1_IDEXE,MemtoReg1_IDEXE, MemtoReg1_EXEMEM,aluResult_EXEMEM);
+ //  EXE(CLK,RESET,ALUSrc1_PR, ALUSrc1, Instr1, Instr1_PR,Dest_Value1, Dst1_PR,readDataB1,readDataB1_PR,
+ // aluResult1_OUT,do_writeback1_WB, writeRegister1_WB,Data1_WB,ALU_control1_PR, ALU_control1,                
+ //Data1_MEM, writeRegister1_MEM, do_writeback1_MEM, do_writeback1_PR,do_writeback1_ID, readRegisterA1,
+ //readRegisterB1, writeRegister1, writeRegister1_PR, Instr1_10_6, MemRead1,MemWrite1,MemRead1_PR,
+ //MemWrite1_PR, Operand_A1,Operand_B1,  MemtoReg1,MemtoReg1_PR,aluResult1_PR,);
 
-   MEM MEM1(CLK, RESET, /* TA: arguments are missing */);
+   MEM MEM1(CLK, RESET, ALUSrc1_EXEMEM,Instr1_EXEMEM,writeData1_WB, writeRegister1_WB, do_writeback1_WB,
+   readDataB1_EXEMEM,do_writeback1_MEM,writeRegister1_EXEMEM,writeRegister1_MEM,data_write_2DM,
+    data_address_2DM,MemRead_2DM, MemWrite_2DM,data_read_fDM,MemtoReg1_EXEMEM,MemtoReg_MEMWB,MemRead1_EXEMEM,
+    MemWrite_EXEMEM,ALU_control1_EXEMEM,aluResult1_EXEMEM,aluResult1_MEMWB,data_read1_MEM/* TA: arguments are missing */);
+  // module MEM (CLK, RESET,ALUSrc1,Instr1,Instr_OUT, writeData1_WB,writeRegister1_WB, do_writeback1_WB,
+   //readDataB1, do_writeback1_PR,writeRegister1, writeRegister1_PR,data_write_2DM, data_address_2DM,
+   //MemRead_2DM,MemWrite_2DM,data_read_fDM,MemtoReg1,MemtoReg1_PR,MemRead1, MemRead1, MemWrite1,ALU_control1,
+    // aluResult1, aluResult1_PR, data_read1_PR, );
 
-   WB WriteBack (CLK, RESET, /* TA: arguments are missing */);
+   WB WriteBack (CLK, RESET,do_Writeback1_MEM,aluResult1_OUT, writeRegister1_MEMWB, writeRegister1_WB,
+   writeData1_WB,do_Writeback_WB,aluResult1_MEMWB,Data_input1,MemtoReg1_MEWB);
+     //  CLK, RESET, do_writeback1,aluResult1_OUT,writeRegister1,writeRegister1_OUT, writeData1_OUT,
+      //do_writeback1_OUT,aluResult1, Data_input1,MemtoReg1, );
 
 endmodule
