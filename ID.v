@@ -41,7 +41,8 @@ module ID ( 	CLK,
 		R2_input,
 	//	CIA, unused
 		FREEZE,
-		insertBubble_OUT
+		insertBubble_OUT,
+		Regbase
 		);
    	
 	output reg      [31: 0] R2_output_PR;
@@ -59,6 +60,7 @@ module ID ( 	CLK,
 	output reg      [ 4: 0] readRegisterB1_PR;
 	output reg      [ 4: 0] Instr1_10_6_PR; //shiftamount
 	output reg      [15: 0] Instr1_15_0_PR; //immediate
+	output reg      [31: 0] Regbase; //value of Reg[base]
 	output reg	      ALUSrc1_PR;
 //	output reg 		single_fetch_OUT;
 	output reg 		taken_branch1_PR;
@@ -129,6 +131,7 @@ module ID ( 	CLK,
 	//assign SYS_OUT = /* TA: you need to deal with the syscalls in sim_main.cpp, however, you need a signal from your hardware */;
 	assign signExtended_output1 = {{16{Instr1[15]}},Instr1[15:0]};
 	assign Shift_addResult1 = PCA+(signExtended_output1<<2);	//calculates branch address
+	assign Jump_address1 = {PCA[31:28], Instr1[25:0], 2'b00};
 	assign nextInstruction_address = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
 	assign readRegisterA1=Instr1[25:21]; //Rs
 	assign readRegisterB1=Instr1[20:16]; //Rt
@@ -327,6 +330,7 @@ module ID ( 	CLK,
 			Dest_Value1_PR <= Reg[writeRegister1];
 			Instr1_PR <= Instr1;
 			ALUSrc1_PR <= ALUSrc1;
+			Regbase <= Reg[readRegisterA1];
 		   end
 	end
 

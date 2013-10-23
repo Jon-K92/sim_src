@@ -36,7 +36,12 @@ module EXE(	CLK,
 		Operand_B1, 
 		MemtoReg1, 
 		MemtoReg1_PR, 
+<<<<<<< HEAD
 		aluResult1_PR
+=======
+		aluResult1_PR,
+		Regbase
+>>>>>>> Added addressing and store and load
 		);
 
    output reg     [31: 0] aluResult1_PR;
@@ -77,21 +82,18 @@ module EXE(	CLK,
    input		  MemWrite1;
    input		  CLK;
    input		  RESET;
+   input   [31:0] Regbase;
 	
    wire	   [31: 0] aluResult1;
    wire	   [31: 0] OpA1;
    wire	   [31: 0] OpB1;
    wire	   [31: 0] Dst1;
 
-<<<<<<< HEAD
    wire	    [31: 0] HI;
-=======
-  wire	    [31: 0] HI;
->>>>>>> 79b098eea3d8982057ba21856b63df825184fb6f
    wire	    [31: 0] LO;
 
-   assign OpA1 = Operand_A1_PR;
-   assign OpB1 = (ALUSrc1|)? Instr1_15_0: Operand_B1;
+   assign OpA1 = (MemWrite1)? Regbase : Operand_A1;
+   assign OpB1 = (ALUSrc1)? Instr1_15_0: Operand_B1;
 
 	// TA: Forwarding is missing here !
 
@@ -115,17 +117,18 @@ module EXE(	CLK,
 		end
 	else if(!FREEZE)
 	  begin
-	    MemtoReg1_PR <= ;
-			MemRead1_PR <= ;
-			MemWrite1_PR <= ;
-			aluResult1_PR <= ;
-			writeRegister1_PR <= ;
+	    MemtoReg1_PR <= MemtoReg1;
+			MemRead1_PR <= MemRead1;
+			MemWrite1_PR <= MemWrite1;
+			aluResult1_PR <= aluResult1;
+			writeRegister1_PR <= writeRegister1;
 			do_writeback1_PR <= ;
-			ALU_control1_PR <= ;
-			readDataB1_PR <= ;
-			Dst1_PR <= ;
-			Instr1_PR <= ;
-			ALUSrc1_PR <= ;
+			ALU_control1_PR <= ALU_control1;
+			readDataB1_PR <= readDataB1;
+			//Dst1_PR <= ;
+			Instr1_PR <= Instr1;
+			ALUSrc1_PR <= ALUSrc1;
+		end
 	end
 
 endmodule

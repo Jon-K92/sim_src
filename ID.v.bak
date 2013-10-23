@@ -8,8 +8,10 @@ module ID ( 	CLK,
 		Instr1_PR,
 		Dest_Value1_PR,
 		SYS_OUT,
+		readDataA1_PR,
 		readDataB1_PR,
 		Instr1_10_6_PR,
+		Instr1_15_0_PR,
 	//	do_writeback1_MEM,
 	//	writeRegister1_MEM,
 		//Data1_MEM, unused.
@@ -26,7 +28,6 @@ module ID ( 	CLK,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
 		Reg,
-		nextInstruction_address,
 		R2_output_PR,
 		Operand_A1_PR,
 		Operand_B1_PR,
@@ -40,7 +41,8 @@ module ID ( 	CLK,
 		R2_input,
 	//	CIA, unused
 		FREEZE,
-		insertBubble_OUT
+		insertBubble_OUT,
+		Regbase
 		);
    	
 	output reg      [31: 0] R2_output_PR;
@@ -50,12 +52,15 @@ module ID ( 	CLK,
 	output reg      [31: 0] nextInstruction_address_PR;
 	output reg      [31: 0] Reg; // data registers $0 - $31
 	output reg      [31: 0] readDataB1_PR;
+	output reg      [31: 0] readDataA1_PR;
 	output reg      [31: 0] Instr1_PR;
 	output reg      [ 5: 0] ALU_control1_PR;
 	output reg      [ 4: 0] writeRegister1_PR;
 	output reg      [ 4: 0] readRegisterA1_PR;
 	output reg      [ 4: 0] readRegisterB1_PR;
-	output reg      [ 4: 0] Instr1_10_6_PR;
+	output reg      [ 4: 0] Instr1_10_6_PR; //shiftamount
+	output reg      [15: 0] Instr1_15_0_PR; //immediate
+	output reg      [31: 0] Regbase; //value of Reg[base]
 	output reg	      ALUSrc1_PR;
 //	output reg 		single_fetch_OUT;
 	output reg 		taken_branch1_PR;
@@ -66,7 +71,7 @@ module ID ( 	CLK,
 	output reg	      insertBubble_OUT;
 	output reg	      SYS_OUT;
 	
-	output	    [31: 0] nextInstruction_address;
+	wire	    [31: 0] nextInstruction_address;
 
 //	input	   [31: 0] Data1_MEM;
 //	input	   [31 :0] Data1_WB;
@@ -129,7 +134,7 @@ module ID ( 	CLK,
 	assign nextInstruction_address = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
 	assign readRegisterA1=Instr1[25:21]; //Rs
 	assign readRegisterB1=Instr1[20:16]; //Rt
-	assign writeRegister1 = (RegDst1)?Instr1[15:11]:((link1)?5'b11111:((syscal1)?5'b00000:Instr1[20:16])); //Setting writeRegister 5 bits as from Instruction or R31(return address register) or 0 on Syscall or Rt which then further allocates
+	assign writeRegister1 = (RegDst1)?Instr1[15:11]:((link1)?5'b11111:((syscal1)?5'b00000:Instr1[20:16])); //Setting writeRegister 5 bits as from Instruction or R31(return address register) or 0 on Syscall or Rt i.e. ADDI which then further allocates
 	assign readDataA1 = Reg[readRegisterA1]; //5 bit location in Reg //used for arithmetic / not used for any links or syscalls
 	assign readDataB1 = Reg[readRegisterB1]; //5 bit location in Reg //not used for BLTZAL, JAL, ADDI, etc. Need to get value from ALU to link / immediate
 	assign Operand_B1 = readDataB1;
@@ -138,7 +143,7 @@ module ID ( 	CLK,
 
 	// TA: bypassing/forwarding logic is missing here!
 	
-	compare compare1(jump1,com_OpA1,com_OpB1,Instr1,taken_branch1);
+	compare compare1(jump1,com_OpA1,com_OpB1,Instr1,taken_branch1); //sets taken_branch1 to 1 when there is a branch or jump
 	//assign readRegisterA2=Instr2[25:21];
 	//assign readRegisterB2=Instr2[20:16];
 	//assign writeRegister2 = (RegDst2)?Instr2[15:11]:((link2)?5'b11111:((syscal2)?5'b00000:Instr2[20:16]));
@@ -318,10 +323,13 @@ module ID ( 	CLK,
 			readRegisterB1_PR <= (ALUSrc1 || link1 || syscal1)?5'b00000:readRegisterB1;
 			do_writeback1_PR <= ((RegWrite1)&&(ALU_control1!=6'b110100))||MemtoReg1;
 			Instr1_10_6_PR <= Instr1[10: 6];
+			Instr1_15_0_PR <= Instr1[15: 0]; //immediate
+			readDataA1_PR <= readDataA1;
 			readDataB1_PR <= readDataB1;
 			Dest_Value1_PR <= Reg[writeRegister1];
 			Instr1_PR <= Instr1;
 			ALUSrc1_PR <= ALUSrc1;
+			Regbase <= Reg[readRegisterA1];
 		   end
 	end
 
