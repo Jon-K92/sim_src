@@ -83,10 +83,10 @@ module EXE(	CLK,
    wire	   [31: 0] OpB1;
    wire	   [31: 0] Dst1;
 
-   reg	    [31: 0] HI;
-   reg	    [31: 0] LO;
+   wire	    [31: 0] HI;
+   wire	    [31: 0] LO;
 
-   assign OpA1 = Operand_A1_PR
+   assign OpA1 = Operand_A1_PR;
    assign OpB1 = (ALUSrc1|)? Instr1_15_0: Operand_B1;
 
 	// TA: Forwarding is missing here !
@@ -109,6 +109,19 @@ module EXE(	CLK,
 			Instr1_PR <= 32'b0;
 			ALUSrc1_PR <= 1'b0;
 		end
+	else if(!FREEZE)
+	  begin
+	    MemtoReg1_PR <= ;
+			MemRead1_PR <= ;
+			MemWrite1_PR <= ;
+			aluResult1_PR <= ;
+			writeRegister1_PR <= ;
+			do_writeback1_PR <= ;
+			ALU_control1_PR <= ;
+			readDataB1_PR <= ;
+			Dst1_PR <= ;
+			Instr1_PR <= ;
+			ALUSrc1_PR <= ;
 	end
 
 endmodule
