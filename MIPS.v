@@ -9,7 +9,7 @@ module MIPS (	R2_output,
              	dBlkRead,
              	dBlkWrite,
              	data_write_2DM,
-             	//data_read_fDM,
+             	data_read_fDM,
              	block_write_2DM,
              	block_write_2IM,
              	block_read_fDM,
@@ -37,7 +37,7 @@ module MIPS (	R2_output,
 
    input  [31: 0]  PC_init;
    input  [31: 0]  R2_input;
-   //input  [31: 0]  data_read_fDM;
+   input  [31: 0]  data_read_fDM;
    input  [255:0]  block_read_fDM;
    input  [255:0]  block_read_fIM;
    input  [31: 0]  Instr1_fIM;
@@ -94,19 +94,16 @@ module MIPS (	R2_output,
    wire [4:0] 	writeRegister1_MEMEXE;
    wire 	do_writeback1_MEM;
    wire 	do_writeback1_EXE;
-   wire [4:0]	writeRegister1_EXEMEM;
+   wire [4:0]	writeRegister1_MEM;
    wire 	MemRead1_EXEMEM;
    wire 	MemWrite1_EXEMEM;
    wire 	MemtoReg1_EXEMEM;
    wire 	aluResult1_EXEMEM;
-   
-   
-   
-   
-   
-   
-   
-   
+   wire 	Instr_OUT;
+   wire [4:0] 	writeRegister1_WB;
+   wire		MemtoReg1_MEMWB;
+   wire 	aluResult1_MEMWB;
+   wire 	data_read1_MEM;
    
    
    
@@ -145,7 +142,7 @@ module MIPS (	R2_output,
    Dst1_EXEMEM,readDataB1,readDataB1_EXEMEM,aluResult1_OUT,do_writeback1_WB, writeRegister1_WB,Data1_WB,
    ALU_control1_EXEMEM,ALU_control1_IDEXE, Data1_MEM,writeRegister1_MEMEXE,do_writeback1_MEM,
    do_writeback1_EXE,do_writeback1_ID,readRegisterA1_IDEXE,readRegisterB1_IDEXE,writeRegister1_IDEXE,
-   writeRegister1_EXEMEM,Instr1_10__6_IDEXE,MemRead1_IDEXE, MemWrite1_IDEXE,MemRead1_EXEMEM,MemWrite1_EXEMEM,
+   writeRegister1_MEM,Instr1_10__6_IDEXE,MemRead1_IDEXE, MemWrite1_IDEXE,MemRead1_EXEMEM,MemWrite1_EXEMEM,
    Operand_Al_IDEXE, Operand_B1_IDEXE,MemtoReg1_IDEXE, MemtoReg1_EXEMEM,aluResult_EXEMEM);
  //  EXE(CLK,RESET,ALUSrc1_PR, ALUSrc1, Instr1, Instr1_PR,Dest_Value1, Dst1_PR,readDataB1,readDataB1_PR,
  // aluResult1_OUT,do_writeback1_WB, writeRegister1_WB,Data1_WB,ALU_control1_PR, ALU_control1,                
@@ -153,7 +150,14 @@ module MIPS (	R2_output,
  //readRegisterB1, writeRegister1, writeRegister1_PR, Instr1_10_6, MemRead1,MemWrite1,MemRead1_PR,
  //MemWrite1_PR, Operand_A1,Operand_B1,  MemtoReg1,MemtoReg1_PR,aluResult1_PR,);
 
-   MEM MEM1(CLK, RESET, /* TA: arguments are missing */);
+   MEM MEM1(CLK, RESET, ALUSrc1_EXEMEM,Instr1_EXEMEM,writeData1_WB, writeRegister1_WB, do_writeback1_WB
+   readDataB1_EXEMEM,do_writeback1_MEM,writeRegister1_EXEMEM;writeRegister1_MEM,data_write_2DM,
+    data_address_2DM,MemRead_2DM, MemWrite_2DM,data_read_fDM,MemtoReg1_EXEMEM,MemtoReg_MEMWB,MemRead1_EXEMEM,
+    MemWrite_EXEMEM,ALU_control1_EXEMEM,aluResult1_EXEMEM,aluResult1_MEMWB,data_read1_MEM/* TA: arguments are missing */);
+  // module MEM (CLK, RESET,ALUSrc1,Instr1,Instr_OUT, writeData1_WB,writeRegister1_WB, do_writeback1_WB,
+   //readDataB1, do_writeback1_PR,writeRegister1, writeRegister1_PR,data_write_2DM, data_address_2DM,
+   //MemRead_2DM,MemWrite_2DM,data_read_fDM,MemtoReg1,MemtoReg1_PR,MemRead1, MemRead1, MemWrite1,ALU_control1,
+    // aluResult1, aluResult1_PR, data_read1_PR, );
 
    WB WriteBack (CLK, RESET, /* TA: arguments are missing */);
 
