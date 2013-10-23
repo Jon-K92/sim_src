@@ -4,10 +4,10 @@
 module EXE(	CLK, 
 		RESET,
 		ALUSrc1_PR,
-//		ALUSrc1,
-//		Instr1,
+		ALUSrc1,
+		Instr1,
 		Instr1_PR,
-		Dest_Value1_PR,
+		Dest_Value1,
 		Dst1_PR,
 		readDataB1,
 		readDataB1_PR,
@@ -36,12 +36,9 @@ module EXE(	CLK,
 		Operand_B1, 
 		MemtoReg1, 
 		MemtoReg1_PR, 
-<<<<<<< HEAD
-		aluResult1_PR
-=======
+
 		aluResult1_PR,
 		Regbase
->>>>>>> Added addressing and store and load
 		);
 
    output reg     [31: 0] aluResult1_PR;
@@ -115,14 +112,14 @@ module EXE(	CLK,
 			Instr1_PR <= 32'b0;
 			ALUSrc1_PR <= 1'b0;
 		end
-	else if(!FREEZE)
+	else
 	  begin
 	    MemtoReg1_PR <= MemtoReg1;
 			MemRead1_PR <= MemRead1;
 			MemWrite1_PR <= MemWrite1;
 			aluResult1_PR <= aluResult1;
 			writeRegister1_PR <= writeRegister1;
-			do_writeback1_PR <= ;
+			do_writeback1_PR <= 0;
 			ALU_control1_PR <= ALU_control1;
 			readDataB1_PR <= readDataB1;
 			//Dst1_PR <= ;
