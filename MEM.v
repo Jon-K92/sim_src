@@ -6,6 +6,7 @@ module MEM (	CLK,
 		ALUSrc1,
 		Instr1,
 		Instr_OUT,
+
 		writeData1_WB,
 		writeRegister1_WB, 
 		do_writeback1_WB,
@@ -13,16 +14,19 @@ module MEM (	CLK,
 		readDataB1,
 		//Data1_2ID,
 		do_writeback1_PR, 
+
 		do_writeback1,
 		writeRegister1, 
 		writeRegister1_PR, 
 		data_write_2DM,
 		data_address_2DM,
+
 		MemRead_2DM,
 		MemWrite_2DM,
 		data_read_fDM,
 		MemtoReg1, 
 		MemtoReg1_PR, 
+
 		MemRead1, 
 		MemWrite1, 
 		ALU_control1, 
@@ -80,7 +84,7 @@ module MEM (	CLK,
  assign	ALU_control = ALU_control1;
  assign	aluResult = aluResult1;
   assign select1_WB = (do_writeback1_WB&&(writeRegister1_WB==(writeRegister1)))/*&&(!ALUSrc1)/**/;
-   assign writeData1_WB = (ALUSrc1)? data_read_aligned: aluResult1;
+   assign writeData_WB = (ALUSrc1)? data_read_aligned: aluResult1;
    
    always
      begin
