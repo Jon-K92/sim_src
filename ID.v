@@ -18,7 +18,7 @@ module ID ( 	CLK,
 	//	writeRegister1_MEM,
 		//Data1_MEM, unused.
 		do_writeback1_WB,
-		writeRegister1_WB,
+		
 		//Data1_WB, unused.
 		//aluResult1, unused.
 		do_writeback1_PR,
