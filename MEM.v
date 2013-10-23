@@ -6,27 +6,22 @@ module MEM (	CLK,
 		ALUSrc1,
 		Instr1,
 		Instr_OUT,
-
-		writeData1_WB,
 		writeRegister1_WB, 
 		do_writeback1_WB,
 		//Dest_Value1,
 		readDataB1,
 		//Data1_2ID,
 		do_writeback1_PR, 
-
-		do_writeback1,
+		//do_writeback1,
 		writeRegister1, 
 		writeRegister1_PR, 
 		data_write_2DM,
 		data_address_2DM,
-
 		MemRead_2DM,
 		MemWrite_2DM,
 		data_read_fDM,
 		MemtoReg1, 
 		MemtoReg1_PR, 
-
 		MemRead1, 
 		MemWrite1, 
 		ALU_control1, 
@@ -51,14 +46,13 @@ module MEM (	CLK,
    input         [31: 0] data_read_fDM;
   // input         [31: 0] Dest_Value1;
    input         [31: 0] readDataB1;
-   input         [31: 0] writeData1_WB;
    input         [31: 0] Instr1;
    input         [ 5: 0] ALU_control1;
    input         [ 4: 0] writeRegister1_WB;
    input         [ 4: 0] writeRegister1;
    input                 ALUSrc1;
    input                 do_writeback1_WB;
-   input                 do_writeback1;
+   //input                 do_writeback1;
    input                 CLK;
    input                 RESET;
    //input                 MemtoReg1;
@@ -70,7 +64,7 @@ module MEM (	CLK,
    wire         [31: 0] Dest_Value;
    wire         [31: 0] aluResult;
    wire         [31: 0] readDataB;
-   wire         [31: 0] writeData_WB;
+   wire         [31: 0] writeData1_WB;
    wire         [31: 0] Instr;
    wire         [ 5: 0] ALU_control;
    wire                 MemRead;
@@ -84,7 +78,7 @@ module MEM (	CLK,
  assign	ALU_control = ALU_control1;
  assign	aluResult = aluResult1;
   assign select1_WB = (do_writeback1_WB&&(writeRegister1_WB==(writeRegister1)))/*&&(!ALUSrc1)/**/;
-   assign writeData_WB = (ALUSrc1)? data_read_aligned: aluResult1;
+   assign writeData1_WB = (ALUSrc1)? data_read_aligned: aluResult1;
    
    always
      begin
@@ -162,9 +156,8 @@ module MEM (	CLK,
            writeRegister1_PR <= writeRegister1;
            aluResult1_PR <= aluResult1;
            data_read1_PR <= data_read_fDM;
-           do_writeback1_PR <= do_writeback1;
+           do_writeback1_PR <= 0;
          end 
      end
 
 endmodule
-
