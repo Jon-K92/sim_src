@@ -4,10 +4,10 @@
 module EXE(	CLK, 
 		RESET,
 		ALUSrc1_PR,
-//		ALUSrc1,
-//		Instr1,
+		ALUSrc1,
+		Instr1,
 		Instr1_PR,
-		Dest_Value1_PR,
+		Dest_Value1,
 		Dst1_PR,
 		readDataB1,
 		readDataB1_PR,
@@ -27,7 +27,6 @@ module EXE(	CLK,
 		writeRegister1, 
 		writeRegister1_PR, 
 		Instr1_10_6, 
-		Instr1_15_0,
 		MemRead1, 
 		MemWrite1, 
 		MemRead1_PR, 
@@ -66,7 +65,6 @@ module EXE(	CLK,
    input	  [ 4: 0] readRegisterB1;
    input	  [ 4: 0] writeRegister1;
    input	  [ 4: 0] Instr1_10_6;
-   input   [ 4: 0] Instr1_15_0;
    input	  [ 4: 0] writeRegister1_WB;
    input		  ALUSrc1;
    input	 	  do_writeback1_MEM;
@@ -86,8 +84,6 @@ module EXE(	CLK,
    reg	    [31: 0] HI;
    reg	    [31: 0] LO;
 
-   assign OpA1 = Operand_A1_PR
-   assign OpB1 = (ALUSrc1|)? Instr1_15_0: Operand_B1;
 
 	// TA: Forwarding is missing here !
 
