@@ -44,6 +44,7 @@ module MIPS (	R2_output,
    input  [31: 0]  Instr2_fIM;
    input 	  CLK;
    input          RESET;
+input FREEZE;
 
    //connecting wires (signals passing through more than 1 stage)
    wire [31: 0]   R2_output_ID/*verilator public*/;
@@ -59,7 +60,8 @@ module MIPS (	R2_output,
    
    //NEW WIRES! (Added 10/22)
    wire 	taken_branch1_IDIF/*verilator public*/;
-   wire	[31:0]	Instr1_IFID;
+   wire	[31:0]	Instr1_IFID/*verilator public*/;
+   wire [31:0] 	Instr2_IFID/*verilator public*/;
    wire		no_new_fetch;
    wire 	fetchNull1;
    wire		ALUSrc1_IDEXE;
@@ -108,7 +110,12 @@ module MIPS (	R2_output,
    wire [15:0] Instr1_15_0_IDEXE;
    wire do_writeback_ID;
    wire [31:0] readDataB1_IDEXE;
-   
+
+	//TEMPORARY (deal with Freeze)
+ //wire FREEZE;/*verilator public*/;
+always begin 
+ FREEZE = 1'b0;
+   end
    
    
    
@@ -123,7 +130,7 @@ module MIPS (	R2_output,
 
    ID ID1(CLK,  RESET, ALUSrc1_IDEXE, Instr1_IDEXE,  Dest_Value1_IDEXE,
    SYS,readDataA1_IDEXE, readDataB1_IDEXE,Instr1_10_6_IDEXE,Instr1_15_0_IDEXE,
-   do_writeback1_WB,writeRegister1_WB,do_writeback1_ID, readRegisterA1_IDEXE,readRegisterB1_IDEXE,
+   do_writeback1_WB,do_writeback1_ID, readRegisterA1_IDEXE,readRegisterB1_IDEXE,
    taken_branch1_IFID,writeRegister1_WB,writeRegister1_IDEXE, nextInstruction_address_IDIF,Reg,
    R2_output,Operand_A1_IDEXE,Operand_B1_IDEXE,ALU_control1_IDEXE,MemRead1_IDEXE,
    MemWrite1_IDEXE,MemtoReg1_IDEXE, Instr1_IFID,PCA_IFID, writeData1_WB,
@@ -150,9 +157,9 @@ module MIPS (	R2_output,
 	//	aluResult1_PR);
 
    MEM MEM1(CLK, RESET, ALUSrc1_EXEMEM,Instr1_EXEMEM, Instr_OUT,
-   writeData1_WB, writeRegister1_WB, do_writeback1_WB,readDataB1_EXEMEM,do_writeback1_MEM,do_writeback1_EXE,
-   writeRegister1_MEMEXE,writeRegister1_MEM,data_write_2DM,data_address_2DM,
-   MemRead_2DM, MemWrite_2DM,data_read_fDM,MemtoReg_MEMWB,MemRead1_EXEMEM,
+   writeData1_WB, writeRegister1_WB, do_writeback1_WB,readDataB1_EXEMEM,do_writeback1_MEM,
+	do_writeback1_EXE,	writeRegister1_MEMEXE,	writeRegister1_MEM,	data_write_2DM,	data_address_2DM,
+   MemRead_2DM, MemWrite_2DM,data_read_fDM,MemtoReg1_EXEMEM, MemtoReg_MEMWB,MemRead1_EXEMEM,
    MemWrite_EXEMEM,ALU_control1_EXEMEM,aluResult1_EXEMEM,aluResult1_MEMWB,data_read1_MEM);
  	//	MEM (	CLK, RESET,ALUSrc1,Instr1,Instr_OUT,writeData1_WB,writeRegister1_WB, do_writeback1_WB,
 	//	readDataB1,do_writeback1_PR,writeRegister1, writeRegister1_PR, data_write_2DM,data_address_2DM,
