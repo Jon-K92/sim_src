@@ -28,7 +28,7 @@ module MEM (	CLK,
 		ALU_control1, 
 		aluResult1, 
 		aluResult1_PR, 
-		data_read1_PR,
+		data_read1_PR
 		);
 
    output reg    [31: 0] aluResult1_PR;
