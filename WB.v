@@ -29,6 +29,20 @@ module WB (	CLK,
 
    wire		    do_writeback1;     
 
-	// TA: insert bypassing/forwarding logic if neccessary   
+always @ (posedge CLK)
+	begin
+	if (do_writeback1)
+		begin	
+			writeData1_OUT <= Data_input1;
+			aluResult1_OUT <= aluResult1;
+			writeRegister1_OUT <= writeRegister1;
+			do_writeback1_OUT <= do_writeback1;
+	else 
+		
+		end	
+
+
+	end
+
 
 endmodule
