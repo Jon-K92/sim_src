@@ -11,7 +11,7 @@ module WB (	CLK,
 		do_writeback1_OUT,
 		aluResult1,
 		Data_input1,
-		MemtoReg1,
+		MemtoReg1
 		);
 
    output reg      [31: 0] writeData1_OUT;
