@@ -103,7 +103,7 @@ module MIPS (	R2_output,
    wire		MemtoReg1_MEMWB;
    wire 	aluResult1_MEMWB;
    wire 	data_read1_MEM;
-   wite 	Data_input1;
+   wire 	Data_input1;
    
    
    
