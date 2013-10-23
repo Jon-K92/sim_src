@@ -103,6 +103,7 @@ module MIPS (	R2_output,
    wire		MemtoReg1_MEMWB;
    wire 	aluResult1_MEMWB;
    wire 	data_read1_MEM;
+   wite 	Data_input1;
    
    
    
@@ -158,6 +159,9 @@ module MIPS (	R2_output,
    //MemRead_2DM,MemWrite_2DM,data_read_fDM,MemtoReg1,MemtoReg1_PR,MemRead1, MemRead1, MemWrite1,ALU_control1,
     // aluResult1, aluResult1_PR, data_read1_PR, );
 
-   WB WriteBack (CLK, RESET, /* TA: arguments are missing */);
+   WB WriteBack (CLK, RESET,do_Writeback1_MEM,aluResult1_OUT, writeRegister1_MEMWB, writeRegister1_WB,
+   writeData1_WB,do_Writeback_WB,aluResult1_MEMWB,Data_input1,MemtoReg1_MEWB);
+     //  CLK, RESET, do_writeback1,aluResult1_OUT,writeRegister1,writeRegister1_OUT, writeData1_OUT,
+      //do_writeback1_OUT,aluResult1, Data_input1,MemtoReg1, );
 
 endmodule
