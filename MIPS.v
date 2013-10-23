@@ -101,9 +101,9 @@ module MIPS (	R2_output,
    wire 	aluResult1_EXEMEM;
    wire 	Instr_OUT;
    wire		MemtoReg1_MEMWB;
-   wire 	aluResult1_MEMWB;
+   wire [31:0]	aluResult1_MEMWB;
    wire 	data_read1_MEM;
-   wire 	Data_input1;
+   wire [31:0]	Data_input1;
    
    
    
@@ -112,7 +112,7 @@ module MIPS (	R2_output,
    
 
    // Pipeline Stages Instantiation
-   IF IF1(CLK, RESET, PCA_IFID, FREEZE,CIA_IFID, taken_branch1_IDIF,
+   IF IF1(CLK, RESET, PCA_IFID, CIA_IFID, taken_branch1_IDIF,
    nextInstruction_address_IDIF,PC_init,Instr1_fIM,Instr1_IDIF,Instr_address_2IM,FREEZE,
    fetchNull1,no_new_fetch/* TA: arguments are missing */);
    //IF(CLK,RESET, 
@@ -159,7 +159,7 @@ module MIPS (	R2_output,
    //MemRead_2DM,MemWrite_2DM,data_read_fDM,MemtoReg1,MemtoReg1_PR,MemRead1, MemRead1, MemWrite1,ALU_control1,
     // aluResult1, aluResult1_PR, data_read1_PR, );
 
-   WB WriteBack (CLK, RESET,do_Writeback1_MEM,aluResult1_OUT, writeRegister1_MEMWB, writeRegister1_WB,
+   WB WriteBack (CLK, RESET,do_Writeback1_MEM,aluResult1_OUT, writeRegister1_MEM, writeRegister1_WB,
    writeData1_WB,do_Writeback_WB,aluResult1_MEMWB,Data_input1,MemtoReg1_MEWB);
      //  CLK, RESET, do_writeback1,aluResult1_OUT,writeRegister1,writeRegister1_OUT, writeData1_OUT,
       //do_writeback1_OUT,aluResult1, Data_input1,MemtoReg1, );

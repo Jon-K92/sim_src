@@ -83,7 +83,11 @@ module EXE(	CLK,
    wire	   [31: 0] OpB1;
    wire	   [31: 0] Dst1;
 
+<<<<<<< HEAD
    wire	    [31: 0] HI;
+=======
+  wire	    [31: 0] HI;
+>>>>>>> 79b098eea3d8982057ba21856b63df825184fb6f
    wire	    [31: 0] LO;
 
    assign OpA1 = Operand_A1_PR;
