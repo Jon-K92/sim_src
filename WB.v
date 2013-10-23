@@ -37,7 +37,7 @@ always @ (posedge CLK)
 			aluResult1_OUT <= aluResult1;
 			writeRegister1_OUT <= writeRegister1;
 			do_writeback1_OUT <= do_writeback1;
-	else 
+	
 		
 		end	
 
