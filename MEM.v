@@ -21,7 +21,7 @@ module MEM (	CLK,
 		MemRead_2DM,
 		MemWrite_2DM,
 		data_read_fDM,
-		//MemtoReg1, 
+		MemtoReg1, 
 		MemtoReg1_PR, 
 		MemRead1, 
 		MemWrite1, 
@@ -60,6 +60,7 @@ module MEM (	CLK,
    //input                 MemtoReg1;
    input                 MemRead1;
    input                 MemWrite1;
+   input  MemtoReg1;
 
    reg         [31: 0] data_read_aligned;
    wire         [31: 0] Dest_Value;
@@ -71,6 +72,7 @@ module MEM (	CLK,
    wire                 MemRead;
    wire                 MemWrite;
    wire                 select1_WB;
+   
 
 
    // TA: bypassing is missing here!
@@ -78,6 +80,7 @@ module MEM (	CLK,
  assign	ALU_control = ALU_control1;
  assign	aluResult = aluResult1;
   assign select1_WB = (do_writeback1_WB&&(writeRegister1_WB==(writeRegister1)))/*&&(!ALUSrc1)/**/;
+   assign writeData1_WB = (ALUSrc1)? data_read_aligned: aluResult1;
    
    always
      begin
@@ -87,7 +90,7 @@ module MEM (	CLK,
    MemWrite_2DM = (MemWrite1);
    data_write_2DM = ((select1_WB)?writeData1_WB:(readDataB1));
    data_address_2DM = aluResult1;
-   writeData1_WB = (ALUSrc1)? data_read_aligned: aluResult1;
+   
 
 	
 	       case(ALU_control)
@@ -149,13 +152,13 @@ module MEM (	CLK,
            data_read1_PR <= 32'b0;
            do_writeback1_PR <= 1'b0;
          end
-       else if(!FREEZE)
+       else
          begin
            MemtoReg1_PR <= MemtoReg1;
            writeRegister1_PR <= writeRegister1;
            aluResult1_PR <= aluResult1;
            data_read1_PR <= data_read_fDM;
-           do_writeback1_PR <= ;
+           do_writeback1_PR <= 0;
          end 
      end
 
