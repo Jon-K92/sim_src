@@ -7,13 +7,11 @@ module ID ( 	CLK,
 	//	single_fetch_OUT,
 		Instr1_PR,
 		Dest_Value1_PR,
-		
 		SYS_OUT,
 		readDataA1_PR,
 		readDataB1_PR,
 		Instr1_10_6_PR,
 		Instr1_15_0_PR,
-		
 	//	do_writeback1_MEM,
 	//	writeRegister1_MEM,
 		//Data1_MEM, unused.
@@ -24,30 +22,27 @@ module ID ( 	CLK,
 		do_writeback1_PR,
 		readRegisterA1_PR,
 		readRegisterB1_PR,
-		
 		taken_branch1_PR,
 //		aluResult1_WB,
 		writeRegister1_WB,
 	 	writeRegister1_PR,
 		nextInstruction_address_PR,
 		Reg,
-		
 		R2_output_PR,
 		Operand_A1_PR,
 		Operand_B1_PR,
 		ALU_control1_PR,
 		MemRead1_PR,
-		
 		MemWrite1_PR,
 		MemtoReg1_PR,
 		Instr1,
 		PCA,
 		writeData1_WB,
-		
 		R2_input,
 	//	CIA, unused
 		FREEZE,
-		insertBubble_OUT
+		insertBubble_OUT,
+		Regbase
 		);
    	
 	output reg      [31: 0] R2_output_PR;
@@ -65,6 +60,7 @@ module ID ( 	CLK,
 	output reg      [ 4: 0] readRegisterB1_PR;
 	output reg      [ 4: 0] Instr1_10_6_PR; //shiftamount
 	output reg      [15: 0] Instr1_15_0_PR; //immediate
+	output reg      [31: 0] Regbase; //value of Reg[base]
 	output reg	      ALUSrc1_PR;
 //	output reg 		single_fetch_OUT;
 	output reg 		taken_branch1_PR;
@@ -135,6 +131,7 @@ module ID ( 	CLK,
 	//assign SYS_OUT = /* TA: you need to deal with the syscalls in sim_main.cpp, however, you need a signal from your hardware */;
 	assign signExtended_output1 = {{16{Instr1[15]}},Instr1[15:0]};
 	assign Shift_addResult1 = PCA+(signExtended_output1<<2);	//calculates branch address
+	assign Jump_address1 = {PCA[31:28], Instr1[25:0], 2'b00};
 	assign nextInstruction_address = (jump1)? Jump_address1: ((taken_branch1)? Shift_addResult1: PCA);
 	assign readRegisterA1=Instr1[25:21]; //Rs
 	assign readRegisterB1=Instr1[20:16]; //Rt
@@ -333,6 +330,7 @@ module ID ( 	CLK,
 			Dest_Value1_PR <= Reg[writeRegister1];
 			Instr1_PR <= Instr1;
 			ALUSrc1_PR <= ALUSrc1;
+			Regbase <= Reg[readRegisterA1];
 		   end
 	end
 
