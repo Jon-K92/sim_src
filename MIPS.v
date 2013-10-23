@@ -69,7 +69,7 @@ module MIPS (	R2_output,
    wire		do_writeback1_WB;
    wire [4:0]	writeRegister1_WB;
    wire		do_writeback1_ID;
-   wire [4:0	readRegisterA1_IDEXE;
+   wire [4:0]	readRegisterA1_IDEXE;
    wire [4:0]	readRegisterB1_IDEXE;
    wire [4:0]	writeRegister1_IDEXE;
    wire [31:0] 	Reg;
@@ -100,7 +100,6 @@ module MIPS (	R2_output,
    wire 	MemtoReg1_EXEMEM;
    wire 	aluResult1_EXEMEM;
    wire 	Instr_OUT;
-   wire [4:0] 	writeRegister1_WB;
    wire		MemtoReg1_MEMWB;
    wire 	aluResult1_MEMWB;
    wire 	data_read1_MEM;
@@ -150,8 +149,8 @@ module MIPS (	R2_output,
  //readRegisterB1, writeRegister1, writeRegister1_PR, Instr1_10_6, MemRead1,MemWrite1,MemRead1_PR,
  //MemWrite1_PR, Operand_A1,Operand_B1,  MemtoReg1,MemtoReg1_PR,aluResult1_PR,);
 
-   MEM MEM1(CLK, RESET, ALUSrc1_EXEMEM,Instr1_EXEMEM,writeData1_WB, writeRegister1_WB, do_writeback1_WB
-   readDataB1_EXEMEM,do_writeback1_MEM,writeRegister1_EXEMEM;writeRegister1_MEM,data_write_2DM,
+   MEM MEM1(CLK, RESET, ALUSrc1_EXEMEM,Instr1_EXEMEM,writeData1_WB, writeRegister1_WB, do_writeback1_WB,
+   readDataB1_EXEMEM,do_writeback1_MEM,writeRegister1_EXEMEM,writeRegister1_MEM,data_write_2DM,
     data_address_2DM,MemRead_2DM, MemWrite_2DM,data_read_fDM,MemtoReg1_EXEMEM,MemtoReg_MEMWB,MemRead1_EXEMEM,
     MemWrite_EXEMEM,ALU_control1_EXEMEM,aluResult1_EXEMEM,aluResult1_MEMWB,data_read1_MEM/* TA: arguments are missing */);
   // module MEM (CLK, RESET,ALUSrc1,Instr1,Instr_OUT, writeData1_WB,writeRegister1_WB, do_writeback1_WB,
