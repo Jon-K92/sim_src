@@ -73,7 +73,7 @@ module MIPS (	R2_output,
    wire [4:0]	readRegisterB1_IDEXE;
    wire [4:0]	writeRegister1_IDEXE;
    wire [31:0] 	Reg;
-    wire [31:0] nextInstruction_address;
+   
     wire [31:0] Operand_A1_IDEXE;
    wire [31:0]	Operand_B1_IDEXE;
    wire [5:0]	ALU_control1_IDEXE;
@@ -127,13 +127,13 @@ module MIPS (	R2_output,
    ID ID1(CLK, RESET,ALUSrc1_IDEXE, FREEZE,Instr1_IDEXE,Dest_Value1_IDEXE,SYS,
    readDataB1_IDEXE,Instr1_10_6_IDEXE,do_writeback1_WB,writeRegister1_WB,do_writeback1_ID,
    readRegisterA1_IDEXE,readRegisterB1_IDEXE,taken_branch1_IFID,writeRegister1_IDEXE,
-   nextInstruction_address_IDIF, nextInstrcution_address,R2_output,Operand_A1_IDEXE,Operand_B1_IDEXE,
+   nextInstruction_address_IDIF, R2_output,Operand_A1_IDEXE,Operand_B1_IDEXE,
    ALU_control1_IDEXE,MemRead1_IDEXE,MemWrite1_IDEXE,MemtoReg1_IDEXE, Instr1_IFID,PCA_IFID,
    writeData1_WB, R2_input,FREEZE,insertBubble_OUT);
   //ID (CLK,RESET,ALUSrc1_PR, Instr1_PR,Dest_Value1_PR, SYS_OUT, readDataB1_PR,Instr1_10_6_PR,
    //do_writeback1_WB, writeRegister1_WB, do_writeback1_PR, readRegisterA1_PR,readRegisterB1_PR,
 //  taken_branch1_PR, writeRegister1_PR, nextInstruction_address_PR,
-  // Reg, nextInstruction_address, R2_output_PR, Operand_A1_PR, Operand_B1_PR,
+  // Reg, R2_output_PR, Operand_A1_PR, Operand_B1_PR,
    //ALU_control1_PR, MemRead1_PR,MemWrite1_PR, MemtoReg1_PR,Instr1,
    //PCA ----Use 'PCA_IFID' (wires)
    //writeData1_WB,R2_input, FREEZE,insertBubble_OUT);
